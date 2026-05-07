@@ -1,8 +1,30 @@
 import java.util.ArrayList;
+import java.io.*;
 
 public class StudentManagementSystem {
 
     ArrayList<Student> students = new ArrayList<>();
+    // Save students to file
+    public void saveToFile() {
+
+        try {
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter("students.txt"));
+
+            for (Student s : students) {
+
+                writer.write(s.id + "," + s.name + "," + s.age + "," + s.course);
+
+                writer.newLine();
+            }
+
+            writer.close();
+
+        } catch (IOException e) {
+
+            System.out.println("Error saving file.");
+        }
+    }
 
     // Add Student
     public void addStudent(Student student) {
@@ -17,6 +39,7 @@ public class StudentManagementSystem {
         }
 
         students.add(student);
+        saveToFile();
 
         System.out.println("Student added successfully!");
         System.out.println("Total Students: " + students.size());
@@ -77,6 +100,8 @@ public class StudentManagementSystem {
                 s.age = newAge;
                 s.course = newCourse;
 
+                saveToFile();
+
                 System.out.println("Student updated successfully!");
                 return;
             }
@@ -93,6 +118,8 @@ public class StudentManagementSystem {
             if (s.id == id) {
 
                 students.remove(s);
+
+                saveToFile();
 
                 System.out.println("Student deleted successfully!");
                 System.out.println("Remaining Students: " + students.size());
