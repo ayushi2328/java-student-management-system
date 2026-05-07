@@ -4,6 +4,10 @@ import java.io.*;
 public class StudentManagementSystem {
 
     ArrayList<Student> students = new ArrayList<>();
+    public StudentManagementSystem()
+    {
+        loadStudentsFromFile();
+    }
     // Save students to file
     public void saveToFile() {
 
@@ -106,28 +110,52 @@ public class StudentManagementSystem {
                 return;
             }
         }
-
         System.out.println("No student found with ID: " + id);
     }
 
-    // Delete Student
-    public void deleteStudent(int id) {
-
-        for (Student s : students) {
-
-            if (s.id == id) {
-
+    public void deleteStudent(int id)
+    {
+        for (Student s : students)
+        {
+            if (s.id == id)
+            {
                 students.remove(s);
-
                 saveToFile();
-
                 System.out.println("Student deleted successfully!");
                 System.out.println("Remaining Students: " + students.size());
-
                 return;
             }
         }
 
         System.out.println("No student found with ID: " + id);
+    }
+    public void loadStudentsFromFile() {
+
+        try {
+
+            BufferedReader reader = new BufferedReader(new FileReader("students.txt"));
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+
+                String[] data = line.split(",");
+
+                int id = Integer.parseInt(data[0]);
+                String name = data[1];
+                int age = Integer.parseInt(data[2]);
+                String course = data[3];
+
+                Student s = new Student(id, name, age, course);
+
+                students.add(s);
+            }
+
+            reader.close();
+
+        } catch (IOException e) {
+
+            System.out.println("No previous student data found.");
+        }
     }
 }

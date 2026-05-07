@@ -1,1 +1,4 @@
-101,Ayushi,20,BTech
+101,Ayushi,20,BTech CSE
+102,Aashi,22,Law
+103,Rahul,25,BTech ECE
+104,Ayesha,21,MBA
