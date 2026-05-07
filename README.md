@@ -1,6 +1,6 @@
 # Java Student Management System
 
-A console-based Java application implementing CRUD operations using OOP concepts, ArrayList, and File Handling.
+A console-based Java application implementing CRUD operations using OOP concepts, ArrayList, and File Handling for persistent data storage.
 
 ## Features
 - Add Student
@@ -13,12 +13,14 @@ A console-based Java application implementing CRUD operations using OOP concepts
 
 ## Technologies Used
 - Java
-- OOP
+- Object-Oriented Programming (OOP)
 - ArrayList
 - File Handling
 - IntelliJ IDEA
+- Git & GitHub
 
 ## Future Improvements
 - MySQL Integration
-- GUI Version
+- JDBC Connectivity
+- GUI Interface
 - Web-Based Version
